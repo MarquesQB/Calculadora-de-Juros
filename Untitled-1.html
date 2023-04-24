@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora de Juros Compostos</title> 
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      body {
+        background-image: url('xd.jpg');
+  background-size: cover;
+  background-position: center;
+   }
+   
+   #central {
+  background: black;
+  color: white;
+  padding: 20px;
+}
+   
+
+
+*{
+    color: white
+
+}
+#taxa-juros{ color:black
+}
+      
+#capital-inicial{ color: black
+}
+
+#capital-final{
+
+color: black;
+}
+#butao{
+
+color: black;
+}
+
+
+form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      input[type="number"] {
+        margin-bottom: 10px;
+      }
+
+      p#resultado {
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculadora de Juros Compostos</h1>
+    <p>Esta Calculadora Mostra Quanto Tempo em Anos para a Capital Inicial Chegar a Capital Final</p>
+    <form>
+      <label for="capital-inicial">Capital inicial:</label>
+      <input type="number" id="capital-inicial" name="capital-inicial"><br>
+      <label for="taxa-juros">Taxa de juros (em decimal):</label>
+      <input type="number" id="taxa-juros" name="taxa-juros"><br>
+      <label for="capital-final">Capital final:</label>
+      <input type="number" id="capital-final" name="capital-final"><br>
+      <input type="button" id="butao" value="Calcular" onclick="calcularTempoJurosCompostos()">
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+      function calcularTempoJurosCompostos() {
+        
+        const C = parseFloat(document.getElementById("capital-inicial").value);
+        const i = parseFloat(document.getElementById("taxa-juros").value);
+        const M = parseFloat(document.getElementById("capital-final").value);
+
+        
+        const t = Math.log(M/C) / Math.log(1+i);
+
+        
+        const anos = Math.floor(t);
+        const meses = Math.floor((t - anos) * 12);
+        const dias = Math.floor(((t - anos) * 12 - meses) * 30);
+
+        
+        document.getElementById("resultado").innerHTML = `Tempo = ${anos} Ano(os), ${meses} Mes(es) e ${dias} Dia(s)`;
+      }
+    </script>
+  </body>
+</html>
+ 
